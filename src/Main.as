@@ -20,10 +20,10 @@
 			var debug:ShapeDebug = new ShapeDebug(1280,760,0x131313);
 			var border:Body = new Body(BodyType.STATIC);
 			addChild(debug.display);
-			border.shapes.add(new Polygon(Polygon.rect(0,0,-1,720)));
-			border.shapes.add(new Polygon(Polygon.rect(1280,0,1,720)));
+			border.shapes.add(new Polygon(Polygon.rect(0,0,-1,500)));
+			border.shapes.add(new Polygon(Polygon.rect(1280,0,1,500)));
 			border.shapes.add(new Polygon(Polygon.rect(0,0,1280,-1)));
-			border.shapes.add(new Polygon(Polygon.rect(0,720,1280,1)));
+			border.shapes.add(new Polygon(Polygon.rect(0,500,1280,1)));
 			border.space = space;
 			
 			addEventListener(Event.ENTER_FRAME, function(e:Event):void{
@@ -45,18 +45,22 @@
 		}
 		
 		public function drop(stageXLoc: Number, stageYLoc: Number):void{
-			var block:Polygon = new Polygon(Polygon.regular(50,50,20));
+			var coin:Euro = new Euro();
+			var block:Polygon = new Polygon(Polygon.regular(45,45,20));
 			var body:Body = new Body();
-			var sprite:Sprite = new Sprite();
-			sprite.graphics.beginFill(0xDAA520, 1);
-			sprite.graphics.drawCircle(0, 0, 50);
-			sprite.graphics.endFill();
-			addChild(sprite);
 			body.shapes.add(block);
-			body.position.setxy(stageXLoc,stageYLoc);
-			body.space = space;
-			body.userData.sprite = sprite;
-			addChild(body.userData.sprite);
+			if(stageYLoc < 360){
+				addChild(coin);
+				body.position.setxy(stageXLoc,stageYLoc);
+				body.space = space;
+				body.userData.sprite = coin;
+				if(body.userData.coin){
+					stage.addChild(body.userData.coin);
+				}
+				if(coin.hitTestObject(MovieClip(root).cad)){
+					trace("hit");
+				}
+			}
 		}
 	} 
 }
