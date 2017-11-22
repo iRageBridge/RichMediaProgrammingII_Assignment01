@@ -13,7 +13,7 @@
 	import flash.events.TouchEvent;
 	
 	public class Main extends Sprite{
-		//var data:Data = new Data();
+		var data:Data = new Data();
 		public var space:Space = new Space(new Vec2(0,1280)); 
 		public function Main():void{}
 		
@@ -24,7 +24,7 @@
 			border.shapes.add(new Polygon(Polygon.rect(0,0,-1,500)));
 			border.shapes.add(new Polygon(Polygon.rect(1280,0,1,500)));
 			border.shapes.add(new Polygon(Polygon.rect(0,0,1280,-1)));
-			border.shapes.add(new Polygon(Polygon.rect(0,500,1280,1)));
+			border.shapes.add(new Polygon(Polygon.rect(0,0,1280,1)));
 			border.space = space;
 			
 			addEventListener(Event.ENTER_FRAME, function(e:Event):void{
@@ -68,23 +68,23 @@
 						}
 						
 						if(coin.x >=0 && coin.x <= 320){
-							//trace(data.sterling);
+							trace("One US dollar is worth "+data.gbp+" Britsh Pounds");
 							stage.removeEventListener(Event.ENTER_FRAME,hitDetector);
 							
 						}
 						
 						else if (coin.x >= 321 && coin.x <= 640){
-							trace("Canadian dollar");
+							trace("One US Dollar is worth "+data.cad+" Canadian Dollars");
 							stage.removeEventListener(Event.ENTER_FRAME,hitDetector);
 						}
 						
 						else if (coin.x >= 641 && coin.x <=960){
-							trace("US dollar");
+							trace("One US Dollar is worth "+data.eur+" Euros");
 							stage.removeEventListener(Event.ENTER_FRAME,hitDetector);
 						}
 						
 						else if(coin.x >= 961 && coin.x <= 1280){
-							trace("Australian dollar");
+							trace("One US Dollar is worth "+data.aud+" Audstalian Dolalrs");
 							stage.removeEventListener(Event.ENTER_FRAME,hitDetector);
 						}
 					}
