@@ -6,10 +6,10 @@
 	import flash.globalization.CurrencyFormatter;
 	
 	public class Data{
-		var aud:Number = new Number();
-		var cad:Number = new Number();
-		var eur:Number = new Number();
-		var gbp:Number = new Number();
+		public var aud:Number = new Number();
+		public var cad:Number = new Number();
+		public var eur:Number = new Number();
+		public var gbp:Number = new Number();
 		public function Data() {
 			var urlRequest:URLRequest  = new URLRequest('http://apilayer.net/api/live?access_key=04cafe23b429ab6f74589334a3089938');
 
@@ -26,10 +26,6 @@
 			cad = data.quotes.USDCAD;
 			eur = data.quotes.USDEUR;
 			gbp = data.quotes.USDGBP;
-			/*trace("The Australian Dollar is worth " + aud + " US Dollars");
-			trace("The Canadian Dollar is worth " + cad + " US Dollars");
-			trace("The Euro is worth " + eur + " US Dollars");
-			trace("The British Pound is worth " + gbp + " US Dollars");
-		*/}
+		}
 	}
 }

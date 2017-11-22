@@ -3,6 +3,7 @@
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import flash.events.TouchEvent;
 	import nape.space.Space;
 	import nape.geom.Vec2;
 	import nape.phys.Body;
@@ -10,11 +11,10 @@
 	import nape.shape.Polygon;
 	import nape.util.Debug;
 	import nape.util.ShapeDebug;
-	import flash.events.TouchEvent;
 	
 	public class Main extends Sprite{
-		var data:Data = new Data();
-		public var space:Space = new Space(new Vec2(0,1280)); 
+		protected var data:Data = new Data();
+		protected  var space:Space = new Space(new Vec2(0,1280)); 
 		public function Main():void{}
 		
 		public function init(){

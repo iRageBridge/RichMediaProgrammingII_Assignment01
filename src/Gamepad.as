@@ -2,6 +2,7 @@
 	import com.adobe.air.gaming.*;
 	import flash.display.Sprite;
 	import flash.events.TouchEvent;
+	import flash.text.TextField;
 
 	public class Gamepad extends Sprite{
 		public var main:Main = new Main();
@@ -22,20 +23,26 @@
 			}
 		}
 
-		public function gamepadConnected(e:AIRGamepadEvent):void{
+		private function gamepadConnected(e:AIRGamepadEvent):void{
 			trace("Connected");
+			var textField = new TextField();
 			var sizeX:Number = airGamepad.width;
 			var sizeY:Number = airGamepad.height;
 			
 			sprite.graphics.clear();
 			sprite.graphics.beginFill(0x0);
-			sprite.graphics.drawRect(400,350,100,150);
+			sprite.graphics.drawRect(0,350,sizeX,sizeY/2+100);
 			sprite.graphics.endFill();
-			
+			textField.text = "Tap the white zone";
+			textField.width = 200;
+			textField.height = 30;
+			textField.x = (10);
+			textField.y = (300);
+			sprite.addChild(textField);
 			airGamepad.drawSprite(sprite);
 		}
 
-		public function tapHandler(evt:TouchEvent):void{
+		private function tapHandler(evt:TouchEvent):void{
 			main.drop(evt.localX, evt.localY);
 		}
 	}
