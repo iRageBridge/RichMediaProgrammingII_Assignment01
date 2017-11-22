@@ -4,7 +4,7 @@
 	import flash.events.TouchEvent;
 
 	public class Gamepad extends Sprite{
-		protected var main:Main = new Main();
+		public var main:Main = new Main();
 		protected var airGamepad:AIRGamepad;
 		protected var sprite:Sprite = new Sprite;
 		

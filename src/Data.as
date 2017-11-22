@@ -12,6 +12,7 @@
 			var urlLoader:URLLoader = new URLLoader();
 			urlLoader.addEventListener(Event.COMPLETE, completeHandler);
 			urlLoader.load(urlRequest);
+
 		}
 
 		private static function completeHandler(event:Event):void {

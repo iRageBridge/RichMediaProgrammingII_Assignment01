@@ -13,6 +13,7 @@
 	import flash.events.TouchEvent;
 	
 	public class Main extends Sprite{
+		//var data:Data = new Data();
 		public var space:Space = new Space(new Vec2(0,1280)); 
 		public function Main():void{}
 		
@@ -57,8 +58,36 @@
 				if(body.userData.coin){
 					stage.addChild(body.userData.coin);
 				}
-				if(coin.hitTestObject(MovieClip(root).cad)){
-					trace("hit");
+				
+				stage.addEventListener(Event.ENTER_FRAME,hitDetector);
+				function hitDetector(e:Event):void{
+					if(coin.y >= 360){
+						if(contains(coin)){
+							body.space = null;
+							removeChild(coin);
+						}
+						
+						if(coin.x >=0 && coin.x <= 320){
+							//trace(data.sterling);
+							stage.removeEventListener(Event.ENTER_FRAME,hitDetector);
+							
+						}
+						
+						else if (coin.x >= 321 && coin.x <= 640){
+							trace("Canadian dollar");
+							stage.removeEventListener(Event.ENTER_FRAME,hitDetector);
+						}
+						
+						else if (coin.x >= 641 && coin.x <=960){
+							trace("US dollar");
+							stage.removeEventListener(Event.ENTER_FRAME,hitDetector);
+						}
+						
+						else if(coin.x >= 961 && coin.x <= 1280){
+							trace("Australian dollar");
+							stage.removeEventListener(Event.ENTER_FRAME,hitDetector);
+						}
+					}
 				}
 			}
 		}
