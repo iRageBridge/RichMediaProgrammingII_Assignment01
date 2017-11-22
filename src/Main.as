@@ -84,7 +84,7 @@
 						}
 						
 						else if(coin.x >= 961 && coin.x <= 1280){
-							trace("One US Dollar is worth "+data.aud+" Audstalian Dolalrs");
+							trace("One US Dollar is worth "+data.aud+" Australian Dollars");
 							stage.removeEventListener(Event.ENTER_FRAME,hitDetector);
 						}
 					}
