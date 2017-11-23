@@ -12,7 +12,6 @@
 		public var gbp:Number = new Number();
 		public function Data() {
 			var urlRequest:URLRequest  = new URLRequest('http://apilayer.net/api/live?access_key=04cafe23b429ab6f74589334a3089938');
-
 			var urlLoader:URLLoader = new URLLoader();
 			urlLoader.addEventListener(Event.COMPLETE, completeHandler);
 			urlLoader.load(urlRequest);

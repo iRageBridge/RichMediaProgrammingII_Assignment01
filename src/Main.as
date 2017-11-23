@@ -68,23 +68,23 @@
 						}
 						
 						if(coin.x >=0 && coin.x <= 320){
-							trace("One US dollar is worth "+data.gbp+" Britsh Pounds");
+							trace("One US dollar is worth "+int((data.gbp)*100)/100+" Britsh Pounds");
 							stage.removeEventListener(Event.ENTER_FRAME,hitDetector);
 							
 						}
 						
 						else if (coin.x >= 321 && coin.x <= 640){
-							trace("One US Dollar is worth "+data.cad+" Canadian Dollars");
+							trace("One US Dollar is worth "+int((data.cad)*100)/100+" Canadian Dollars");
 							stage.removeEventListener(Event.ENTER_FRAME,hitDetector);
 						}
 						
 						else if (coin.x >= 641 && coin.x <=960){
-							trace("One US Dollar is worth "+data.eur+" Euros");
+							trace("One US Dollar is worth "+int((data.eur)*100)/100+" Euros");
 							stage.removeEventListener(Event.ENTER_FRAME,hitDetector);
 						}
 						
 						else if(coin.x >= 961 && coin.x <= 1280){
-							trace("One US Dollar is worth "+data.aud+" Australian Dollars");
+							trace("One US Dollar is worth "+int((data.aud)*100)/100+" Australian Dollars");
 							stage.removeEventListener(Event.ENTER_FRAME,hitDetector);
 						}
 					}

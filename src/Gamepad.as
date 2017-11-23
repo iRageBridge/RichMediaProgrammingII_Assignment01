@@ -10,7 +10,6 @@
 		protected var sprite:Sprite = new Sprite;
 		
 		public function Gamepad():void{}
-		
 		public function init(){
 			stage.addChild(main);
 			main.init();
