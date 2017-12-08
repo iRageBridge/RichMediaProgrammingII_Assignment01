@@ -25,9 +25,10 @@
 		//Global variables
 		public var falling:Boolean = false;
 		public var present:Boolean = false;
+		public var vibrate:Boolean = false;
 		public var coin:Euro;
+		//public var gamepad:Gamepad = new Gamepad();
 		public var mainText = new TextField();
-		
 		private var myTimer:Timer = new Timer(3000,1);
 		private var currencies = new Array("Of any Currency", "British Pounds", "Canadian Dollars", "Australian Dollars", "Euro");
 		private var randomSelection:int = Math.random()*4;
@@ -47,7 +48,6 @@
 		public function Main():void{}
 		
 		public function init(){
-			
 			//Timer which runs on game completion for 2 seconds, then restarts game.
 			myTimer.addEventListener(TimerEvent.TIMER_COMPLETE, timerComplete);
 			function timerComplete(e:TimerEvent){
@@ -189,6 +189,7 @@
 		
 		//Causes coin to drop on tap release, called from GamePad class.
 		public function release(stageXLoc:Number, stageYLoc:Number):void{
+			var gamepad:Gamepad = new Gamepad();
 			if(stageYLoc < 360){
 				body.shapes.add(block);
 				body.position.setxy(stageXLoc,stageYLoc);
@@ -206,13 +207,15 @@
 				function hitDetector(e:Event):void{
 					falling = true;
 					if(coin.y >= 360){
+						vibrate = false;
 						falling = false;
 						if(contains(coin)){
 							body.space = null;
 							removeChild(coin);
 						}
 							
-						if(coin.x >=0 && coin.x <= 320){ 
+						if(coin.x >=0 && coin.x <= 320){
+							vibrate = true;
 							gbp += data.gbp;
 							gbpField.text = String("$" + int(gbp*100)/100);
 							stage.removeEventListener(Event.ENTER_FRAME,hitDetector);
@@ -220,18 +223,21 @@
 						}
 							
 						else if (coin.x >= 321 && coin.x <= 640){
+							vibrate = true;
 							cad += data.cad;
 							cadField.text = String("$" + int(cad*100)/100);
 							stage.removeEventListener(Event.ENTER_FRAME,hitDetector);
 						}
 							
 						else if (coin.x >= 641 && coin.x <=960){
+							vibrate = true;
 							eur += data.eur;
 							eurField.text = String("$" + int(eur*100)/100);
 							stage.removeEventListener(Event.ENTER_FRAME,hitDetector);
 						}
 							
 						else if(coin.x >= 961 && coin.x <= 1280){
+							vibrate = true;
 							aud += data.aud;
 							audField.text = String("$" + int(aud*100)/100);
 							stage.removeEventListener(Event.ENTER_FRAME,hitDetector);

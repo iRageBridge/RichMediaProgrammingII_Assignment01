@@ -15,7 +15,16 @@
 		private var airGamepad:AIRGamepad;
 		private var sprite:Sprite = new Sprite;
 		
-		public function Gamepad():void{}
+		public function Gamepad():void{
+			//event listener checking for the "vibrate" boolean in the main class, if true, it vibrates for one second
+			addEventListener(Event.ENTER_FRAME, vibrateHandler);
+			function vibrateHandler(e:Event):void{
+				if(main.vibrate == true){
+					vibrate();
+					main.vibrate = false;
+				}
+			}
+		}
 		
 		//Setting up gamepad handshake properties
 		public function init(){
@@ -26,9 +35,16 @@
 			airGamepad.connect(stage,"Flare3d", "http://www.flare3d.com");
 		}
 		
+		public function vibrate(){
+			if(airGamepad.hasVibrator){
+				airGamepad.vibrate(100);
+			}
+		}
+		
 		//Adds event listeners when gamepad has successfully connnected.
 		private function gamepadConnected(e:AIRGamepadEvent):void{
 			if(airGamepad){
+				vibrate();
 				trace("Air Gamepad Connected");
 				this.airGamepad.addEventListener(TouchEvent.TOUCH_BEGIN, tapHandler);
 				this.airGamepad.addEventListener(TouchEvent.TOUCH_END, releaseHandler);
